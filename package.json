@@ -28,12 +28,11 @@
   },
   "scripts": {
     "build": "tsc --build tsconfig.json",
-    "start": "ts-node-dev --respawn --transpile-only src/server.ts",
     "develop": "ts-node-dev --respawn --transpile-only src/server.ts",
     "knex:migrate": "knex --knexfile ./src/knexfile.ts migrate:latest",
     "knex:status": "knex --knexfile ./src/knexfile.ts migrate:status"
   },
   "author": "Diogo Reis",
-  "license": "ISC",
+  "license": "MIT",
   "repository": ""
 }
