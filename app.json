@@ -1,0 +1,7 @@
+{
+  "name": "Start on Heroku: Node.js",
+  "description": "An Api wishlist",
+  "repository": "https://github.com/DiogoReiss/apiWishlist",
+  "keywords": ["node", "express", "heroku"],
+  "image": "heroku/nodejs"
+}

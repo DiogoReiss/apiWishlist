@@ -30,7 +30,7 @@
   "scripts": {
     "start": "node build/index.js",
     "dev": "nodemon .",
-    "build": "tsc",
+    "build": "knex:migrate && tsc",
     "knex:migrate": "knex --knexfile ./src/knexfile.ts migrate:latest",
     "knex:status": "knex --knexfile ./src/knexfile.ts migrate:status"
   },
