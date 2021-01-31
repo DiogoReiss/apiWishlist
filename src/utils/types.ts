@@ -3,10 +3,10 @@ export type Products = {
   id: number;
   title: string;
   image: {
-    id: number;
     src: string;
   };
-  wish: boolean;
+  productURL: string;
+  userID?: string;
 }
 
 export type Costumer = {

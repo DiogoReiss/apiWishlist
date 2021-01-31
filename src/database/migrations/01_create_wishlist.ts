@@ -10,9 +10,8 @@ export async function up(knex: Knex) {
       .onUpdate('CASCADE');
     table.integer('id').primary();
     table.string('title').notNullable();
-    table.boolean('wish').notNullable();
-    table.integer('imgID').notNullable();
     table.string('imgSRC').notNullable();
+    table.string('productURL').notNullable();
   })
 }
 

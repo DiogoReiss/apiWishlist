@@ -3,10 +3,11 @@ import { Request, Response } from 'express'
 
 
 export default async function verifyWishlist(req: Request, res: Response) {
-
   const listProducts = await db
     .from('wishlist')
-    .select('id', 'title', 'wish', 'imgID', 'imgSRC')
+    .where('user_id', req.params.id)
+    .select('id', 'title', 'imgSRC', 'productURL')
 
-    return res.status(200).json(listProducts)
+  console.log(req.params.id)
+  return res.status(200).json(listProducts)
 }

@@ -5,7 +5,7 @@ import verifyWishlist from './controllers/verifyWishlist';
 
 const routes = express.Router();
 
-routes.get('/api/wishlist', verifyWishlist)
+routes.get('/api/wishlist/:id', verifyWishlist)
 
 routes.post('/api/wishlist', addProduct)
 

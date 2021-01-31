@@ -14,5 +14,7 @@ export default async function addUser(req: Request, res: Response) {
     .then((userid) => {
       console.log('inserted a new user', userid)
       return res.status(201).json('inserted a new user')
+    }).catch((err) => {
+      console.log(err)
     })
 }

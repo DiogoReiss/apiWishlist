@@ -2,11 +2,12 @@ import db from '../database/connection';
 import { Products } from '../utils/types';
 import { Request, Response } from 'express'
 import verifyUser from './verifyUser';
-import removeProduct from './removeProduct'
 
 export default async function addProduct(req: Request, res: Response) {
-  const { id, title, image, wish }: Products = req.body
+  
+  const { id, title, image, productURL }: Products = req.body
   const { userID } = req.body
+  console.log(id, title, image, userID)
   await verifyUser(req, res)
   const verifyIfAlreadyExist = await db.select('id')
     .from('wishlist')
@@ -19,9 +20,8 @@ export default async function addProduct(req: Request, res: Response) {
             user_id: userID,
             id,
             title,
-            imgID: image.id,
             imgSRC: image.src,
-            wish
+            productURL
           }])
           .then((newProductID) => {
             console.log('inserted product', newProductID)
@@ -31,5 +31,8 @@ export default async function addProduct(req: Request, res: Response) {
         console.log('Product already exists')
         return res.status(400).json('Product already in a wishlist')
       }
+    }).catch(() => {
+      console.log('Product already exists')
+      return res.status(400).json('Product already in a wishlist')
     })
 }
