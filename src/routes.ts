@@ -1,7 +1,7 @@
 import express from 'express';
-import addProduct from './controllers/addProduct';
-import removeProduct from './controllers/removeProduct';
-import verifyWishlist from './controllers/verifyWishlist';
+import addProduct from './controllers/createList';
+import removeProduct from './controllers/deleteList';
+import verifyWishlist from './controllers/listWishlist';
 
 const routes = express.Router();
 

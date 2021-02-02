@@ -1,17 +1,17 @@
+import { Document } from "mongoose";
 
-export type Products = {
-  id: number;
+export interface IProducts{
+  product_id: number;
   title: string;
-  image: {
-    src: string;
-  };
-  productURL: string;
-  userID?: string;
-}
+  image_src: string;
+  product_url: string
+};
 
-export type Costumer = {
-  id: number; 
-  first_name: string;
+
+export interface IWishlistSchema extends Document{
+  user_id: number;
+  first_name: string; 
   last_name: string;
-  emaiL?: string;
-}
+  email: string;
+  products: IProducts[]
+};
