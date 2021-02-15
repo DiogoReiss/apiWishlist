@@ -23,7 +23,7 @@ export default async function createWishlist (req: Request, Res: Response) {
         log.info("MongoDB", "Create a new user and wishlist");
         return Res.status(200).json(user);
       } else {
-        const product = await wishlistSchema.findOne({ "products.product_id": objProduct.product_id }).then(async (wish) => {
+        const product = await wishlistSchema.findOne({ "products.product_id": objProduct.product_id, user_id: userID }).then(async (wish) => {
           if (!wish) {
             const addProduct = await wishlistSchema.updateOne({ user_id: userID }, { $push: { products: objProduct } }, { upsert: true, useFindAndModify: false })
             log.info("MongoDB", "added a new product");
