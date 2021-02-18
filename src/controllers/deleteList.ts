@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import log from '../utils/logging';
 import wishlistSchema from '../models/wishlistModel';
-import { IWishlistSchema } from '../utils/types';
 import { Document } from 'mongoose';
 
 
@@ -17,7 +16,7 @@ export default async function removeProduct (req: Request, Res: Response) {
         log.error("MongoDB", "This user dont have a wishlist");
         return Res.status(400).json("This user dont have a wishlist");
       } else {
-        const product = await wishlistSchema.findOne({ "products.product_id": product_id }).then(async (wish) => {
+        const product = await wishlistSchema.findOne({ "products.product_id": product_id, user_id: userID }).then(async (wish) => {
           if (!wish) {
             log.info("MongoDB", "The product does not exists");
             return Res.status(400).json("The product does not exists");
